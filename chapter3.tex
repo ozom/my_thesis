@@ -1,0 +1,105 @@
+% !TEX encoding = UTF-8 Unicode
+\chapter{ The Standard Security Method in RESTful Web Services}
+\section{Overview of OAuth 2.0}
+Comme mentionné dans la section 2.3, il existe de nombreux modèles de sécurité qui sont utilisés dans le service Web REST, cependant, chaque fois que l'on considère le modèle le plus commun parmi d'entre eux, l'un des premier modèle qui vient à l'esprit est OAuth 2.0 car il est le plus commun modèle.
+
+OAuth (Open Authorization) 2.0 est le protocole d'autorisation ouvert pour les applications natives et Web pour sécuriser leurs services en utilisant une méthode simple et standard. Il gère les demandes de ressources de diverses sources pour authentifier qui communique et son droit d'accès à la base de données qui est sauvegardée par une autre application. Prenons Flockler (comme lien http://flockler.com/new-factory) site Web comme un exemple, une application magazine social. Il recueille et affiche de nombreux postes de diverses ressources sociales telles que Twitter, Facebook et Instagram sur des sujets choisis ou à partir de comptes configurés. Cette application enverra des milliers de demandes au serveur OAuth et exigera de se vérifier pour accéder aux bases de données de ces serveurs sociaux. Après que le serveur OAuth a accepté leur accès, l'application a le droit de récupérer les données.
+Avant d'accéder au serveur de ressources, les clients doivent s'authentifier  en envoyant une requête au serveur OAuth contenant les informations d'identification de l'utilisateur. Dans certains cas, ces informations d'identification sont la clé publique, la clé privée ou l'ID client. OAuth Server qualifie cette demande et renvoie un jeton valide représenté pour ce client et valable pour 2 heures habituellement. Ensuite, l'utilisateur doit joindre ce jeton dans l'en-tête de la requête et l'envoyer au serveur de ressources avec lequel il souhaite interagir. Le serveur de ressources communique avec le serveur OAuth pour vérifier le jeton après la réception de la requête. Si le jeton est verifé avec succès par le serveur OAuth, le serveur de ressource exécute cette requête et renvoie une réponse réussie sinon une erreur est renvoyée au client.
+
+Le point central du processus d'authentification OAuth est le jeton d'accès. Au lieu de compter sur le mot de passe de l'utilisateur comme clé principale pour chaque accès au serveur, OAuth génère un jeton basé sur les informations d'identification utilisateur. Ce jeton représente l'accès à une API unique au nom d'un client spécifique.
+Le diagramme suivant illustre le flux de travail de l'authentification OAuth en général [Hughes Systique Corporation, 2006]:
+\begin{figure}[! ht ]
+			\centering
+			\includegraphics[scale=.4]{./images/api_oauth_steps.png}
+			\caption {API growth}
+		\end{figure}
+En appliquant ce modèle, le serveur et le client pourraient réduire la charge de travail car ils n'ont pas besoin d'analyser et de dépenser beaucoup d'efforts sur la sécurité. Selon The Internet Society [1999], dans le modèle HTTP Basic et Digest Authentication, le serveur est responsable de vérifier toutes les requêtes. Dans le modèle d'authentification client, ce processus d'authentification a lieu principalement dans le client. Cependant dans le modèle d'OAuth, le client et le serveur pourraient prendre leurs mains outre de ce processus puisqu'il y a un tiers qui prend soin de lui. Cela permet non seulement de réduire la charge de travail pour le client et le serveur, mais également d'améliorer le niveau de sécurité de l'application. Les développeurs d'applications ne sont pas les spécialistes de la sécurité et, de leur point de vue, ils veulent être délester du poids de protéger les données sensibles. L'objectif final des développeurs d'applications est de mettre en œuvre toutes les fonctionnalités avec le moins les bugs possibles, par conséquent, les fonctions de sécurité devraient être la charge d'une autre parti et dans ce cas, les spécialistes d'OAuth sont heureux de partager ce fardeau avec les développeurs d'applications. C'est aussi la raison pour laquelle ce modèle est appliqué largement par de nombreux grands fournisseurs d'API tels que Facebook, Twitter et Google.
+
+\section{OAuth 2.0 Core}
+
+\subsection{The OAuth 2.0 Authorization Framework}
+
+Comme mentionné dans la section 3.1, OAuth sépare le processus d'authentification du serveur de ressources en utilisant le jeton d'accès qui est accordé par le serveur OAuth avec l'approbation du propriétaire de la ressource et accordé pour un client enregistré pour un temps limité. Fondamentalement, il existe quatre rôles dans OAuth [Hardt, 2012]:
+\begin{itemize}
+\item Propriétaire de la ressource: l'entité accorde l'accès à une ressource sécurisée. Dans le cas où le propriétaire de ressource est une personne, habituellement il représente l'utilisateur final.
+\item Serveur de ressources: le serveur héberge toutes les ressources qui acceptent le client authentifié pour accéder aux données à l'aide du jeton d'accès.
+\item Client: la personne, l'application envoie la demande au nom du propriétaire de la ressource pour récupérer les données du serveur de ressource.
+\item Serveur d'autorisation: le serveur accorde un jeton d'accès au client après avoir réussi tous les processus d'authentification.
+\end{itemize}
+Revenons au cas Flockler,  pour expliquer de manière plus explicite les rôles dans OAuth, Facebook, Twitter et Instagram jouent un rôle de serveur de ressources, car ces serveurs stockent tous les messages et les photos de Flockler. Par conséquent, les utilisateurs de ces réseaux sociaux sont le propriétaire de la ressource car ils possèdent ces postes et photos et Flockler lui-même est le client. Flockler enverra la demande au nom des utilisateurs  pour obtenir le jeton d'accès et utiliser ce jeton d'accès pour recueillir tous les messages et photos nécessaires de ces serveurs.Enfin et surtout, OAuth signifie serveur d'autorisation. Le serveur OAuth vérifiera ces clients et fournira le jeton d'accès pour les clients valides.
+
+Cette section se concentrera sur la façon dont le serveur d'autorisation peut qualifier le client, comment le client peut être représenté pour le propriétaire de la ressource. La réponse à ces questions est l'allocation d'autorisation. Il s'agit d'un justificatif représentant le propriétaire de la ressource et utilisé par le client pour générer le jeton d'accès. Cette autorisation sera envoyée au serveur d'autorisation par Hypertext Transfer Protocol. OAuth définit quatre types d'allocation d'autorisation comme suit [Hardt, 2012]:
+\begin{itemize}
+\item Code d'autorisation: Il s'agit du résultat renvoyé après avoir navigué user-agent (la combinaison des tokens de produit utilisés pour accorder aux applications communicantes l'identification par le nom et la version du logiciel) du propriétaire de la ressource au serveur d'autorisation par le client. L'application utilise ce code d'autorisation pour communiquer avec le serveur d'autorisation pour passer par le processus d'authentification. Ce code d'autorisation prouve la capacité d'authentifier le client et la possibilité de passer le jeton d'accès directement au client sans passer par le propriétaire de la ressource.
+\item Implicite: Il s'agit d'une méthode moins compliquée du Code d'autorisation. En flux implicite, les informations d'identification intermédiaires ne sont pas générées et le jeton d'accès est envoyé directement au client en utilisant un langage de script tel que JavaScript. Ce type de méthode est compatible pour l'application dans le navigateur puisque le serveur d'autorisation est capable de vérifier le jeton d'accès dans l'URI et certaines étapes rondes sont déposées dans cette méthode.
+\item Propriété de ressource Mot de passe Credentials: Le nom d'utilisateur et le mot de passe du propriétaire de la ressource peuvent être utilisés directement pour obtenir le jeton d'accès. Le Client se vérifiera en utilisant ces deux informations d'identification. Toutefois, à mon avis, ce pourrait être l'option la moins sécurisée parmi les quatre types de d'allocation d'autorisation. L'envoi d'un nom d'utilisateur et d'un mot de passe distincts n'est jamais une solution sécurisée puisque l'application de suivi peut écouter votre message et révéler votre nom d'utilisateur et votre mot de passe.
+\item Client Credentials: Au lieu d'utiliser les informations d'identification du propriétaire de la ressource, le client peut utiliser ses informations d'identification pour s'authentifier et obtenir le jeton d'accès, mais cette méthode ne peut être appliquée que lorsque ces informations sont qualifiées et que le droit du client est limité à modifier et récupérer les ressources.
+\end{itemize}
+Cette thèse mettra l'accent sur la méthode d'identification des clients puisque ce type de d'allocation d'autorisation est appliquée largement par divers grands fournisseurs d'API tels que Twitter. Par conséquent, prenons un autre regard sur cette méthode pour avoir une vue générale du flux de travail dans la section suivante.
+
+\subsection{client authentication in OAUTH 2.0}
+
+Chaque client enregistré reçoit un identificateur de client, qui est une chaîne unique et n'est pas confidentiel, par le serveur d'authentification. Chaque fois que le client envoi une requête au serveur d'authentification pour obtenir le jeton d'accès, l'identifiant du client est requis dans cette demande pour prouver la validité de ce client. Le client peut établir un ensemble d'informations d'authentification telles que mot de passe, paire de clés public-privé comme explication ci-dessous:
+\begin{itemize}
+\item Client Password
+
+Selon le modèle «Client Credentials» de la section 3.2.1, le client peut envoyer son nom d'utilisateur et son mot de passe au serveur d'authentification en tant autorisation pour générer un jeton d'accès. Dans OAuth 2.0, le client peut envoyer son identifiant comme nom d'utilisateur en utilisant l'authentification de base HTTP (qui a été introduit dans la section 2.3), mais l'identifiant doit être encodé à l'aide de l'algorithme d'encodage "application / x-www-form-urlencoded". Voici un exemple de demande de jeton d'accès à l'aide du mot de passe du client:
+
+
+\begin{verbatim}
+Authorization: Basic czZCaGRSa3F0Mzo3RmpmcDBaQnIxS3REUmJuZlZkbUl3
+\end{verbatim}
+
+
+Comme on peut le voir, dans l'en-tête Autorisation, il n'y a qu'une seule chaîne qui est représentée pour le client. Ceci est le résultat après encodage de la combinaison de nom d'utilisateur (identifiant) et mot de passe. Par conséquent, le serveur d'authentification doit prendre en charge l'authentification de base HTTP.
+
+En outre, OAuth 2.0 prend également en charge le client pour inclure ses informations d'identification dans le corps de requête en utilisant les arguments ci-dessous:
+* Client\_id: the client identifier after registration process.
+
+* Client\_secret: the confidential string is used only by specific client.
+
+Fondamentalement, le client\_id pourrait être vu comme nom d'utilisateur du client et le client\_secret est le mot de passe. Voici l'exemple de la requête utilisant client\_id et client\_secret:
+%%code goes here %%%%%%%%
+
+
+
+\begin{verbatim}
+POST /token HTTP/1.1           Host: server.example.com           Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token&refresh_token=tGzv3JOkF0XG5Qx2TlKWIA&client_i
+                   d=s6BhdRkqt3&client_secret=7Fjfp0ZBr1KtDRbnfVdmIw
+\end{verbatim}
+
+
+
+Selon OAuth, ce type de d'allocation d'autorisation n'est pas recommandé et ce n'est  l'option que si le client d'une certaine manière n'a pas la capacité d'utiliser l'authentification de base HTTP. De mon point de vue, client\_id explicite et client\_secret valeur dans la demande pourrait être le problème. En utilisant l'authentification de base de HTTP, le nom d'utilisateur de client et le mot de passe sont encodés et combinés puis envoyés seulement en une chaîne d'encodage au serveur d'authentification, cependant quoiqu'ils soient codés, client\_id et client\_secret sont séparés et lisibles dans la demande. Les attaquants pourraient exploiter cette faille pour décrypter ces deux arguments en utilisant l'attaque en texte clair choisie. Cela pourrait être la raison pour laquelle client\_id et client\_secret ont une priorité inférieure à l'authentification de base HTTP.
+\item Public Key Infrastructure
+
+L'infrastructure à clé publique (PKI) est un mécanisme cryptographique et c'est l'innovation de la cryptographie à clé symétrique. Si la clé symétrique utilise la même clé pour le processus de chiffrement et de déchiffrement, la cryptographie à clé publique applique une paire de clés (une clé publique et une clé privée) pour ce processus et sépare chaque clé pour chaque processus. La clé publique n'est pas confidentielle et distribuée communément, cependant, la clé privée doit être gardée secrète. En raison de l'utilisation d'une clé spécifique pour un processus spécifique, le message, qui a été chiffré par clé publique, peut être déchiffré uniquement par clé privée et inversement la clé publique est capable de déchiffrer le message s'il a été chiffré par clé privée [CGI Group, 2004 ].
+
+\textit{Processus de cryptage} :
+
+Dans OAuth, chaque client enregistré reçoit une paire de clés, ainsi, chaque fois que le client demande au serveur d'authentification de générer le jeton d'accès en utilisant les informations d'identification du client, le client doit inclure sa clé publique et privée dans cette requête. Comme on peut le voir sur la figure 3, au début, étape 1a, le message lisible est calculé digest, une représentation unique (un peu comme un checksum sophistiqué) en utilisant la technique de hachage. Après cela à l'étape 1b, le résumé est crypté en utilisant la clé privée du client pour générer la signature, mais cette signature inclut également la clé publique du client. Cela pourrait aider le serveur d'autorisation à vérifier et qualifier cette signature en utilisant la clé publique de l'émetteur. Dans l'étape suivante 2a, la clé de cryptage / décryptage symétrique est générée une fois puisque les clés asymétriques sont encombrantes pour un long message.
+Dans le processus de cryptage, le message, la signature et la clé publique seront cryptés à nouveau par une clé symétrique comme étape 2b. Cela conduit à inclure cette clé symétrique à l'intérieur du message afin que le destinataire puisse décrypter plus tard. Cependant, il y a une considération ici qui est que comment empêcher une autre personne de voir cette clé symétrique, cela signifie que seul le destinataire, à qui la demande est envoyée, est capable de le récupérer et de décrypter ce message. Le moyen le plus sécurisé est de crypter de nouveau la clé symétrique par la clé publique destinataire à l'étape 2c. Enfin, le paquet entier sera envoyé au serveur.
+\begin{figure}[! ht ]
+			\centering
+			\includegraphics[scale=.4]{./images/api_encryption_detail.png}
+			\caption {API growth}
+		\end{figure}
+\newpage		
+
+\textit{Processus de décryptage} :
+
+Après le processus de cryptage, le destinataire reçoit l'ensemble du paquet. Tout d'abord, le destinataire doit déchiffrer ce paquet en utilisant sa clé publique comme dans la description à l'étape 1a. Après déballage du paquet, le destinataire à le message chiffré et la clé symétrique. Ensuite, cette clé symétrique est utilisée pour décoder le message en tant qu'état 1b pour collecter la clé publique du client et la signature.
+A l'étape de la vérification, il existe deux processus parallèles. Le premier processus consiste à déchiffrer la signature en utilisant la clé publique qui a été collectée à l'étape précédente 1b. Le résultat final de l'étape 2a est d'obtenir le résumé à l'intérieur de cette signature. L'autre processus évalue à nouveau le message en utilisant la même formule de hachage que le client, puisque le hachage est un processus à sens unique. Cela signifie que le serveur ne peut pas décrypter le digest pour récupérer ce message. Par conséquent, le résultat final de l'étape 2b est également un digest. A ce moment, le serveur compare deux digestures de l'étape 2a et 2b. Dans le cas où ces digest sont exactement les mêmes, le message et la signature sont authentifés et acceptés.
+\begin{figure}[! ht ]
+			\centering
+			\includegraphics[scale=.4]{./images/api_decryption_detail.png}
+			\caption {API growth}
+		\end{figure}
+Ce modèle d'autorisation est appliqué de manière significative par de nombreux fournisseur API qui permettent aux programmeurs de développer leur propre application pour récupérer automatiquement des données à partir du serveur de ressources telles que Twitter, Facebook et de nombreux autres réseaux sociaux. Ce modèle sera analysé dans le système Twitter dans le prochain chapitre.
+\end{itemize}
+
+
+
+

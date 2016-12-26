@@ -1,0 +1,27 @@
+\select@language {french}
+\contentsline {chapter}{Abstract}{i}{chapter*.1}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Background}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}D\IeC {\'e}finitions des termes et concepts}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Probl\IeC {\'e}matique}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}M\IeC {\'e}thodologie}{4}{section.1.4}
+\contentsline {section}{\numberline {1.5}Structure}{5}{section.1.5}
+\contentsline {chapter}{\numberline {2}Les services web REST}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Presentation des services web rest}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Sp\IeC {\'e}cifications de l'architecture}{8}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}\unskip ~Les m\IeC {\'e}thodes HTTP.~}{8}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}\unskip ~Les URi ressources orient\IeC {\'e}s REST.~}{8}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}\unskip ~Repr\IeC {\'e}sentation.~}{10}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}\unskip ~Stateless.~}{10}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}\unskip ~Fonctionnalit\IeC {\'e} s\IeC {\'e}curitaire dans les services web REST.~}{11}{subsection.2.2.5}
+\contentsline {chapter}{\numberline {3} The Standard Security Method in RESTful Web Services}{14}{chapter.3}
+\contentsline {section}{\numberline {3.1}Overview of OAuth 2.0}{14}{section.3.1}
+\contentsline {section}{\numberline {3.2}OAuth 2.0 Core}{15}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}\unskip ~The OAuth 2.0 Authorization Framework.~}{15}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}\unskip ~client authentication in OAUTH 2.0.~}{16}{subsection.3.2.2}
+\contentsline {chapter}{\numberline {4}Twitter security methods}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}R\IeC {\'e}sum\IeC {\'e} de la m\IeC {\'e}thode de s\IeC {\'e}curit\IeC {\'e} twitter : 3-Legged Oauth 2.0}{19}{section.4.1}
+\contentsline {section}{\numberline {4.2}Authentication \& Authorization in Twitter API calls}{23}{section.4.2}
+\contentsline {chapter}{\numberline {5}The Title of Your First Appendix}{28}{chapter.5}
+\contentsline {section}{\numberline {5.1}section title}{28}{section.5.1}
+\contentsline {chapter}{References}{28}{section.5.1}
