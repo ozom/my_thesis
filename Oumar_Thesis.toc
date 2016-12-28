@@ -22,6 +22,4 @@
 \contentsline {chapter}{\numberline {4}Twitter security methods}{19}{chapter.4}
 \contentsline {section}{\numberline {4.1}R\IeC {\'e}sum\IeC {\'e} de la m\IeC {\'e}thode de s\IeC {\'e}curit\IeC {\'e} twitter : 3-Legged Oauth 2.0}{19}{section.4.1}
 \contentsline {section}{\numberline {4.2}Authentication \& Authorization in Twitter API calls}{23}{section.4.2}
-\contentsline {chapter}{\numberline {5}The Title of Your First Appendix}{28}{chapter.5}
-\contentsline {section}{\numberline {5.1}section title}{28}{section.5.1}
-\contentsline {chapter}{References}{28}{section.5.1}
+\contentsline {chapter}{References}{27}{chapter*.4}

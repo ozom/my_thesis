@@ -1,0 +1,116 @@
+\begin{thebibliography}{10}
+
+\bibitem{1}
+Hughes~Systique Coporation.
+\newblock ``securing restful web services using spring and oauth 2.0''.
+\newblock {\em Available at:
+  www.hsc.com/portals/0/uploads/articles/wp\_securing\_restful\_webservices\_oauth26354
+  06646412464000.pdf}, 2006.
+
+\bibitem{2}
+Cryptome.
+\newblock Fundamental security concepts.
+\newblock {\em available from :
+  https://cryptome.org/2013/09/infosecurity-cert.pdf}, NA.
+
+\bibitem{3}
+Twitter Documentation.
+\newblock {\em ``How long does an access token last?''}.
+\newblock https://dev.twitter.com/oauth/overview/faq, accessed 4th november
+  2016 edition, 2015.
+
+\bibitem{4}
+D.~Hardt Ed.
+\newblock {\em The OAuth 2.0 Authorization Framework}.
+\newblock ISSN: 2070-1721, 2012.
+
+\bibitem{5}
+M.~Elkstein.
+\newblock ``learn rest: A tutorial''.
+\newblock {\em available at :
+  http://rest.elkstein.org/2008/02/how-simple-is-rest.html}, 2008.
+
+\bibitem{6}
+Envoisolutions.
+\newblock {\em ``Scalable, Reliable, and Secure RESTful services''}, 2007.
+
+\bibitem{7}
+R.T. Fielding.
+\newblock ``chapter 5: Representational state transfer (rest), architectural
+  styles and the design of network-based software architectures.''.
+\newblock {\em Available at :
+  http://www.ics.uci.edu/~fielding/pubs/dissertation/rest\_arch\_style.htm},
+  NA.
+
+\bibitem{8}
+CGI Group.
+\newblock {\em Public Key Encryption and Digital Signature: How do they work?},
+  2004.
+
+\bibitem{9}
+Prentice Hall.
+\newblock ``cryptography and network security : Principles and practic, second
+  edition'', chapter 14.
+\newblock Available from : https://msdn.microsoft.com/en-
+  us/library/cc767139.aspx, 2005.
+
+\bibitem{10}
+IBM.
+\newblock ``restful web services: The basics''.
+\newblock {\em https://www.ibm.com/developerworks/library/ws-restful/}, 09
+  February 2015.
+
+\bibitem{11}
+J.~Langford.
+\newblock ``implement least privilege at your enterprise''.
+\newblock Technical report, SANS Insitute, 5th July 2003.
+
+\bibitem{12}
+D.~Rogers N.~Allott and G.~Preston.
+\newblock ``w3c security workshop position paper a web based security model fit
+  for purpose''.
+\newblock {\em Aivailable from :
+  http://www.w3.org/2008/security-ws/papers/OMTP\_Security\_Position\_Paper.pdf},
+  2008.
+
+\bibitem{13}
+Dec. 11~2012 Programmable~Web.
+\newblock ``39 statistics apis: Compete, clicky and cownt us''.
+\newblock {\em available at :
+  http://www.programmableweb.com/news/39-statistics-apis-compete-clicky-and-cownt-us/2012/12/11},
+  2012.
+
+\bibitem{14}
+CSI~Director R.~Richardson.
+\newblock ``2010 / 2011 csi computer crime and security survey''.
+\newblock {\em Available from :
+  http://itlaw.wikia.com/wiki/CSI\_Computer\_Crime\_and\_Security\_Survey\_2010/2011},
+  2011.
+
+\bibitem{15}
+Slideshare.
+\newblock ``chart of web api growth from 2005 through 2013''.
+\newblock {\em available at
+  http://www.slideshare.net/programmableweb/web-api-growthsince2005}, 2013.
+
+\bibitem{16}
+The~Internet Society.
+\newblock ``http authentication: Basic and digest access authentication''.
+\newblock {\em http://www.rfc- base.org/txt/rfc-2617.txt}, 1999.
+
+\bibitem{17}
+Statista.
+\newblock ``number of monthly active twitter users worldwide from 1st quarter
+  2010 to 3rd quarter 2015 (in millions)''.
+\newblock {\em available at
+  http://www.statista.com/statistics/282087/number-of-monthly-active-twitter-users},
+  2010.
+
+\bibitem{18}
+J.~Wagnon.
+\newblock "ssl profiles part 8: Client authentication''.
+\newblock {\em available at
+  https://devcentral.f5.com/articles/ssl-profiles-part-8-client-
+  authentication}, 2013.
+
+\end{thebibliography}

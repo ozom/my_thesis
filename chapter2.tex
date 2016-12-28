@@ -1,16 +1,16 @@
 % !TEX encoding = UTF-8 Unicode
 \chapter{Les services web REST}
 
-Retour à l'époque où la définition de REST a été introduite par Roy Fielding dans sa thèse universitaire «Architectural Styles et la conception d'architectures logicielles basées sur le réseau» en 2000 à l'Université de Californie, cette théorie n'a pas reçu beaucoup d'attention, cependant, pour le moment REST est l'un des termes les plus populaires et joue un rôle principal dans le développement Web [ProgrammableWeb, 2012]. Il est devenu le fondement de la croissance des API. La technologie REST est apparue de plus en plus dans les API existantes sur le marché [Slideshare, 2013].
+Retour à l'époque où la définition de REST a été introduite par Roy Fielding dans sa thèse universitaire «Architectural Styles et la conception d'architectures logicielles basées sur le réseau» en 2000 à l'Université de Californie, cette théorie n'a pas reçu beaucoup d'attention, cependant, pour le moment REST est l'un des termes les plus populaires et joue un rôle principal dans le développement Web \cite{13}. Il est devenu le fondement de la croissance des API. La technologie REST est apparue de plus en plus dans les API existantes sur le marché \cite{15}.
 
-Selon le Centre de recherche Web programmable [Slideshare, 2013], de 2005 à 2013, les API Web ont connu une croissance impressionnante qui a été plus forte que jamais (d'une seule API en 2005 à 10302 API en octobre 2013) comme on le voit sur Le graphique de la figure suivante.
+Selon le Centre de recherche Web programmable \cite{15}, de 2005 à 2013, les API Web ont connu une croissance impressionnante qui a été plus forte que jamais (d'une seule API en 2005 à 10302 API en octobre 2013) comme on le voit sur Le graphique de la figure suivante.
 \begin{figure}[! ht ]
 			\centering
 			\includegraphics[scale=.4]{./images/api_growth.png}
 			\caption {API growth}
 		\end{figure}
 		
-La question ici est de s'avoir ce qui aurait pu causer cette croissance intéressante? Le graphique suivant, figure 2, pourrait répondre en partie à cette question. Comme cela a été indiqué dans le sondage qui a été publié le 11 Décembre 2012 par le ProgrammableWeb [2012], plus de deux tiers des API statistiquement sélectionnés ont été développés par le cadre REST. À ce stade, l'impact de REST sur le développement web a été clairement établi.
+La question ici est de s'avoir ce qui aurait pu causer cette croissance intéressante? Le graphique suivant, figure 2, pourrait répondre en partie à cette question. Comme cela a été indiqué dans le sondage qui a été publié le 11 Décembre 2012 par le \cite{13}, plus de deux tiers des API statistiquement sélectionnés ont été développés par le cadre REST. À ce stade, l'impact de REST sur le développement web a été clairement établi.
 
 \begin{figure}[! ht ]
 			\centering
@@ -21,7 +21,7 @@ La question ici est de s'avoir ce qui aurait pu causer cette croissance intéres
 Les sections suivantes vous présenteront plus en détail le concept de service Web RESTful et son flux de travail.
 \section{Presentation des services web rest}
 REST signifie Representational State Transfer. Dans l'ensemble, la discipline de REST comprend l'apatridicité client-serveur, le protocole cacheable de communication.
-Selon la définition d'IBM [2015], "REST définit un ensemble de principes architecturaux par lesquels vous pouvez concevoir des services Web axés sur les ressources d'un système, y compris la façon dont les états des ressources sont adressés et transférés sur HTTP par un large éventail de clients écrits sous différentes langages". C'est aussi la caractéristique la plus remarquable du service Web RESTful, qui est l'axé ressources. Cette fonctionnalité simplifie considérablement la complexité de l'architecture Web en évitant d'utiliser des mécanismes complexes comme CORBA, RPC ou SOAP pour communiquer entre le client et le serveur [Fielding, 2000]. Les méthodes HTTP simples avec quelques ajustements ont remplacé ces algorithmes pour améliorer les services comme on peut le voir sur la Figure 3 ci-dessous.
+Selon la définition \cite{10}, "REST définit un ensemble de principes architecturaux par lesquels vous pouvez concevoir des services Web axés sur les ressources d'un système, y compris la façon dont les états des ressources sont adressés et transférés sur HTTP par un large éventail de clients écrits sous différentes langages". C'est aussi la caractéristique la plus remarquable du service Web RESTful, qui est l'axé ressources. Cette fonctionnalité simplifie considérablement la complexité de l'architecture Web en évitant d'utiliser des mécanismes complexes comme CORBA, RPC ou SOAP pour communiquer entre le client et le serveur  \cite{7}. Les méthodes HTTP simples avec quelques ajustements ont remplacé ces algorithmes pour améliorer les services comme on peut le voir sur la Figure 3 ci-dessous.
 \begin{figure}[! ht ]
 			\centering
 			\includegraphics[scale=.4]{./images/api_rest_2006.png}
@@ -69,7 +69,7 @@ Comme mentionné dans la section 2.2.1, par la méthode HTTP, cette requête dem
 \item La valeur: Ceci est une clarification pour la demande. Cette partie complètera les exigences pour restreindre la portée de l'interaction ou spécifier plus de détails pour l'action de cette requête. Dans l'URI ci-dessus, "name = exambook\&ISBN=ISBN123" joue le rôle de valeur de la requête. Il clarifie que la requête est de demander à créer un nouveau livre avec le nom "exambook" et ISBN123 comme ISBN.
 \end{itemize}
 En appliquant cette structure claire, l'URI REST est non seulement intuitif à lire, comprendre et ressources orientées (c'est-à-dire, chaque requête doit spécifier la ressource sur laquelle il souhaite agir) mais simplifie également la requête.
-Comparons la complexité de la demande entre les services Web à l'aide de SOAP et RESTful Web Service [M. Elkstein, 2008].
+Comparons la complexité de la demande entre les services Web à l'aide de SOAP et RESTful Web Service \cite{5}.
 \begin{verbatim}
 <?xml version="1.0"?>
         <soap:Envelope
@@ -83,7 +83,7 @@ Comparons la complexité de la demande entre les services Web à l'aide de SOAP 
         </soap:Envelope>
 \end{verbatim}
 %%code here Code Snippet 1: Request using SOAP Envelope
-L'extrait de code précedant illustre une requête utilisant l'enveloppe SOAP. Dans cette demande, les utilisateurs sont tenus de créer une enveloppe SOAP avec un corps à l'intérieur. Dans le corps, l'action de cette requête doit être soulignée en utilisant la structure XML. En outre, toutes les informations supplémentaires pour cette action doit être inséré à l'intérieur du corps. Cette structure va pousser le fardeau sur le côté client et côté serveur puisque les utilisateurs ont besoin de créer un formulaire compliqué pour une demande simple et le serveur doit gérer un XML complexe pour récupérer les informations nécessaires. Dans le même but, dans RESTful, la demande sera courte, simple et précise. Il peut être interprété comme suit:
+L'extrait de code précédant illustre une requête utilisant l'enveloppe SOAP. Dans cette demande, les utilisateurs sont tenus de créer une enveloppe SOAP avec un corps à l'intérieur. Dans le corps, l'action de cette requête doit être soulignée en utilisant la structure XML. En outre, toutes les informations supplémentaires pour cette action doit être inséré à l'intérieur du corps. Cette structure va pousser le fardeau sur le côté client et côté serveur puisque les utilisateurs ont besoin de créer un formulaire compliqué pour une demande simple et le serveur doit gérer un XML complexe pour récupérer les informations nécessaires. Dans le même but, dans RESTful, la demande sera courte, simple et précise. Il peut être interprété comme suit:
 %%code here 
 \begin{verbatim}
 GET http://www.acme.com/phonebook/UserDetails/12345
@@ -94,7 +94,7 @@ Une seule ligne peut représenter pour tout le fichier XML complexe et il n'y a 
 \subsection{Représentation}
 Comme expliqué ci-dessus à la figure 3, la différence entre les services Web REST et les services Web en 2000 est que le REST utilise la méthode HTTP combinant certains formats lisibles standard tels que JSON ou XML. Le JSON est également utilisé par la ressource qui est déclenchée dans la requête et il reflète l'état actuel et les propriétés de la ressource. Ce JSON ou XML est aussi la réponse de la requête et inclus dans le corps HTTP.
 
-Voici l'exemple retourné JSON pour la demande d'obtenir les informations d'tilisateur Facebook comme ci-dessous:
+Voici l'exemple retourné JSON pour la demande d'obtenir les informations de l'utilisateur Facebook comme ci-dessous:
 \begin{verbatim}
 GET /v2.5/{user-id} HTTP/1.1
 Host: graph.facebook.com
@@ -122,13 +122,13 @@ La communication dans RESTful Web Service doit être apatride. Cela signifie que
 Encore une fois, cette contrainte maintiendra la haute performance de REST. Stateless montre ses avantages en:
 \begin{itemize}
 \item Visibilité: Les demandes sont suffisamment claires pour que le serveur ne dépense pas plus d'efforts supplémentaires pour prendre un autre regard au-delà de la demande. Comme mentionné ci-dessus, dans la conception apatride, la demande doit être aussi détaillée que possible et en raison de cette caractéristique, la visibilité de chaque demande s'améliore significativement.
-\item Fiabilité: Dans REST, l'échec partiel de la requête précédente peut être facilement récupéré sans duplication ou modification de l'état de la ressource. Prenons un exemple d'échec de la requête DELETE (Figure 4) [Envoisolutions, 2007].
+\item Fiabilité: Dans REST, l'échec partiel de la requête précédente peut être facilement récupéré sans duplication ou modification de l'état de la ressource. Prenons un exemple d'échec de la requête DELETE (Figure 4) \cite{6}.
 \begin{figure}[! ht ]
 			\centering
 			\includegraphics[scale=.4]{./images/api_reliability.png}
 			\caption {API reliability}
 		\end{figure}
-Dans ce cas, le côté client envoie une requête de suppression pour supprimer un objet de la ressource dans le serveur. Après avoir verifié la demande, le serveur a accepté et exécuté la commande en tant qu'exigence et renvoyé la confirmation. Cependant, en raison d'une erreur de connexion, il ya un échec à ce stade et la confirmation ne peut pas être envoyée au client. En conséquence, le client supposera que la demande n'a pas été effectuée et la nouvelle demande sera envoyée à nouveau au serveur. À ce moment, le serveur ne prend aucune action puisque cet objet a été supprimé ainsi la confirmation non valide sera renvoyée au client. Ainsi, l'intégrité du système est maintenue aussi haut que possible puisqu'il n'y a pas de changement ou de duplicata dans la ressource.
+Dans ce cas, le côté client envoie une requête de suppression pour supprimer un objet de la ressource dans le serveur. Après avoir vérifié la demande, le serveur a accepté et exécuté la commande en tant qu'exigence et renvoyé la confirmation. Cependant, en raison d'une erreur de connexion, il ya un échec à ce stade et la confirmation ne peut pas être envoyée au client. En conséquence, le client supposera que la demande n'a pas été effectuée et la nouvelle demande sera envoyée à nouveau au serveur. À ce moment, le serveur ne prend aucune action puisque cet objet a été supprimé ainsi la confirmation non valide sera renvoyée au client. Ainsi, l'intégrité du système est maintenue aussi haut que possible puisqu'il n'y a pas de changement ou de duplicata dans la ressource.
 
 \item Evolution : C'est l'une des caractéristiques exceptionnelles du REST, le serveur n'est pas tenu de préparer l'espace pour le résultat de la demande puisque toutes les informations essentielles de résultat ont été renvoyées au client comme réponse à cette requête. Par conséquent, la demande doit déterminer le type de résultat renvoyé dans Content-Type à l'intérieur de chaque demande. Cela réduira la latence, le trafic réseau et le temps de charge coté serveur.
 \end{itemize}
@@ -143,7 +143,7 @@ credentials = "Basic" basic-credentials
 Authorization: Basic QWxhZGluOnNlc2FtZSBvdXZyZSB0b2k=
 \end{verbatim}
 %%code goes here 
-Dans l'exemple, l'ID d'utilisateur est "Aladdin" et le mot de passe est "sesame ouvre toi", cependant, ces chaînes ne sont pas transmises directement à la requête. La chaîne opaque, qui est le résultat du codage based64, est utilisée à la place [The Internet Society, 1999].
+Dans l'exemple, l'ID d'utilisateur est "Aladdin" et le mot de passe est "sesame ouvre toi", cependant, ces chaînes ne sont pas transmises directement à la requête. La chaîne opaque, qui est le résultat du codage based64, est utilisée à la place \cite{16}
 
 \textbf{Authentification de l'accès de Digest} : Différent de l'authentification de base de HTTP, l'authentification de l'accès de Digest fournit un non cryptage du contenu du message. Le point le plus intéressant de ce modèle est d'utiliser la valeur nonce. Cela signifie que chaque requête doit contenir une valeur unique. Que la demande soit exécutée ou non, valide ou non, authentifiée ou non, elle doit régénérer une nouvelle valeur unique pour chaque requête. Comme pour l'authentification de base, le serveur authentifie également l'en-tête WWW-Authenticate illustré ci-dessous:
 %%code goes here 
@@ -165,16 +165,15 @@ credentials                = "Digest" digest-response
                 response 	                = "response" "=" request-digest
                 request-digest          = <"> 32LHEX <">
 \end{verbatim}
-Dans cet exemple, digest-response, une chaîne de 32 chiffres hexadécimaux calculée à partir des valeurs ci-dessus, prend la place mot de passe utilisateur. Le «qop» est représenté pour «qualité de protection» et il est pertinent pour nonce, ce qui protège le serveur contre les attaques de texte brut. Il s'agit également de l'amélioration de l'authentification de base HTTP. Dans le modèle précédent, l'attaquant peut spécifier un texte en clair puis le crypter ou le signer pour révéler les caractéristiques de l'algorithme de cryptage. Pour certains cas, en particulier dans la cryptographie à clé publique, ce modèle est très réalisable et les attaquants sont en mesure d'exploiter cette faille pour envoyer de nombreuses demandes d'authentification tant qu'ils connaissent la clé publique. Toutefois, la compréhension de cette lacune, Digest Access Authentication modèle s'attend à ce que les utilisateurs d'incluvent une valeur unique dans la demande [The Internet Society, 1999].
-
+Dans cet exemple, digest-response, une chaîne de 32 chiffres hexadécimaux calculée à partir des valeurs ci-dessus, prend la place mot de passe utilisateur. Le «qop» est représenté pour «qualité de protection» et il est pertinent pour nonce, ce qui protège le serveur contre les attaques de texte brut. Il s'agit également de l'amélioration de l'authentification de base HTTP. Dans le modèle précédent, l'attaquant peut spécifier un texte en clair puis le crypter ou le signer pour révéler les caractéristiques de l'algorithme de cryptage. Pour certains cas, en particulier dans la cryptographie à clé publique, ce modèle est très réalisable et les attaquants sont en mesure d'exploiter cette faille pour envoyer de nombreuses demandes d'authentification tant qu'ils connaissent la clé publique. Toutefois, la compréhension de cette lacune, Digest Access Authentication modèle s'attend à ce que les utilisateurs d'incluvent une valeur unique dans la demande \cite{16}.
 \begin{figure}[! ht ]
 			\centering
 			\includegraphics[scale=.4]{./images/api_client_authentication.png}
 			\caption {API rest 2000}
 		\end{figure}
 
-Authentification coté client: Le côté client reçoit l'identité du côté du serveur. Dans ce modèle, le client est tenu de vérifer l'identité du serveur, cependant, l'oposé n'est pas obligatoire. Ainsi, contrairement aux modèles ci-dessus, l'authentification client exécute le processus d'authentification côté client et tous les messages entre le client et le serveur sont cryptés [Wagnon, 2013].
-Comme on peut le voir sur la figure 5, après réception de la demande du client, le serveur envoie automatiquement le certificat deux fois. La première fois il informe le client qu'il doit préparer son certificat  parce que le prochain message du serveur requiert de vérifier l'identité du client. Dans les prochaines étapes, le client envoie son certificat, les clés à crypter et la signature numérique pour s'authentifier. Après avoir parcouru le processus d'authentification, le client envoie une requête au seveur qui est cryptée par une clé symétrique. À ce moment, le serveur exécute la demande et renvoie la confirmation au client.
+Authentification coté client: Le côté client reçoit l'identité du côté du serveur. Dans ce modèle, le client est tenu de vérifier l'identité du serveur, cependant, l'opposé n'est pas obligatoire. Ainsi, contrairement aux modèles ci-dessus, l'authentification client exécute le processus d'authentification côté client et tous les messages entre le client et le serveur sont cryptés \cite{18}.
+Comme on peut le voir sur la figure 5, après réception de la demande du client, le serveur envoie automatiquement le certificat deux fois. La première fois il informe le client qu'il doit préparer son certificat  parce que le prochain message du serveur requiert de vérifier l'identité du client. Dans les prochaines étapes, le client envoie son certificat, les clés à crypter et la signature numérique pour s'authentifier. Après avoir parcouru le processus d'authentification, le client envoie une requête au serveur qui est cryptée par une clé symétrique. À ce moment, le serveur exécute la demande et renvoie la confirmation au client.
 
 \textbf{Authentification OAuth} : Ce modèle devient de plus en plus populaire puisqu'il est appliqué dans la grande majorité des services Web RESTful. Ce modèle sera également analysé et approfondi dans le prochain chapitre.
 
